@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donasyon</title>
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/landing.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<nav>
+    <a href="#" class="logo">
+        <!--                    <img alt="logo" src="assets/images/logo.png">-->
+    </a>
+    <ul class="menu">
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="manage.php">Manage Organization</a></li>
+        <li><a href="orglist.php">Organization List</a></li>
+        <li><a href="about.php">About Us</a></li>
+    </ul>
+</nav>
+
+<script>
+    // let nav = document.getElementsByClassName("nav");
+    // for(let i = 0; i < nav.length; i++) {
+    //     nav[i].addEventListener("click", function() {
+    //         let active = document.getElementsByClassName("active");
+    //
+    //         if(active.length > 0) {
+    //             active[0].className = active[0].className.replace(" active", "");
+    //         }
+    //         this.className += " active";
+    //     });
+    // }
+    let currentLocation = location.href;
+    let nav = document.querySelectorAll('a');
+    let navLength = nav.length;
+    for(let i = 0; i < navLength; i++) {
+        if(nav[i].href === currentLocation) {
+            nav[i].className = "active";
+        }
+    }
+
+</script>

@@ -1,0 +1,86 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Donasyon</title>
+        <link rel="stylesheet" type="text/css" href="assets/stylesheets/landing.css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    </head>
+    <body>
+        <section class="main">
+            <div id="nav-placeholder">
+
+            </div>
+            <script>
+                $(function(){
+                    $("#nav-placeholder").load("navbar.html");
+                });
+            </script>
+            <div class="slideshow-container">
+                <div class="slides fade">
+                    <img alt="Slide-1" src="assets/images/slides/slide1.jpg">
+                    <div class="slide-text">
+                        <h1>Protect our front liners</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="container">
+                            <a class="slide-text-btn" href="#">DONATE NOW</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slides fade">
+                    <img alt="Slide-2" src="assets/images/slides/slide2.jpg">
+                    <div class="slide-text">
+                        <h1>Help the victims of flood</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="container">
+                            <a class="slide-text-btn" href="#">DONATE NOW</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slides fade">
+                    <img alt="Slide-3" src="assets/images/slides/slide3.jpeg">
+                    <div class="slide-text">Calamity 3</div>
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
+            <div class="dots">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </section>
+
+    </body>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            let dots = document.getElementsByClassName("dot");
+            if(n > slides.length) slideIndex = 1;
+            if(n < 1) slideIndex = slides.length;
+            for(i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for(i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+
+        }
+    </script>
+
+    </html>
