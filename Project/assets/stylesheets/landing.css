@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+:root {
+    /* === Fonts === */
+    --title-font-size: 24px;
+    --sentence-font-size: 16px;
+    --mini-font-size: 12px;
 
+    /* === Colors === */
+    --main-color: #fc6f41;
+    --light-color: #fcdcc3;
+    --dark-color: #b72731;
+    --darker-color: #53022b;
+    --darkest-color: #2b022c;
+}
+html {
+    scroll-behavior: smooth;
+}
 body {
     margin: 0;
     padding: 0;
@@ -14,6 +29,7 @@ ul {
     list-style: none;
 }
 nav {
+    /*position: fixed;*/
     display: flex;
     justify-content: space-around;
     align-content: center;
@@ -86,7 +102,7 @@ nav ul li a.active, nav ul li a:hover {
     box-shadow: 5px 10px 30px rgba(252, 59, 0, 0.397);
 }
 .slides img {
-    height: 500px;
+    height: 680px;
     width: 100%;
     object-fit: cover;
 }
@@ -156,4 +172,47 @@ nav ul li a.active, nav ul li a:hover {
 @keyframes fade {
     from {opacity: .4}
     to {opacity: 1}
+}
+.choose-text-container h1 {
+    display: flex;
+    justify-content: center;
+    font-size: var(--title-font-size);
+    color: var(--main-color);
+}
+.calamity-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.calamity-container .calamity {
+    width: 25%;
+    min-height: 450px;
+    margin: 2rem 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 9px 26px rgba(20, 121, 255, 0.25);
+    background-color: #fff;
+    transition: 0.1s ease-in-out;
+
+}
+.calamity-container .calamity:hover {
+    box-shadow: 0 9px 26px rgba(20, 121, 255, 0.5);
+    transform: scale(1.02);
+    cursor: pointer;
+}
+.calamity-container .calamity img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.calamity-container .calamity p {
+    margin: 1rem 2rem;
+}
+.calamity-container .calamity h2 {
+    text-align: center;
+    color: var(--dark-color);
+    font-size: var(--sentence-font-size);
+    margin-top: 2rem;
 }
