@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+:root {
+    /* === Fonts === */
+    --title-font-size: 24px;
+    --sentence-font-size: 16px;
+    --mini-font-size: 12px;
+
+    /* === Colors === */
+    --main-color: #fc6f41;
+    --light-color: #fcdcc3;
+    --dark-color: #b72731;
+    --darker-color: #53022b;
+    --darkest-color: #2b022c;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    background-color: #fff;
+
+}
+.container {
+    height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forms {
+    position: relative;
+    width: 380px;
+    height: 370px;
+    padding: 0.5rem 2.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 9px 26px rgba(20, 121, 255, 0.25);
+    /*display: flex;*/
+    /*justify-content: center;*/
+}
+#register-container {
+    height: 1200px;
+
+}
+#reg-form {
+    position: relative;
+    width: 700px;
+    height: 1150px;
+}
+.h1-container {
+    display: flex;
+    justify-content: center;
+}
+.forms h1 {
+    font-size: var(--title-font-size);
+    color: #fc6f41;
+    margin-bottom: 3rem;
+}
+.forms .text-field {
+    position: relative;
+    height: 50px;
+    margin-right: 2.3rem;
+    margin-bottom: 1rem;
+}
+.text-field input {
+    height: 100%;
+    width: 100%;
+    border-radius: 0.75rem;
+    background-color: transparent;
+    border: 1px solid #E5E5E5;
+    outline: none;
+    padding: 0 1.3em;
+    letter-spacing: 1px;
+
+    z-index: 1;
+}
+.text-field label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0 5px 0;
+    background-color: #fff;
+    border-radius: 2rem;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    font-size: var(--mini-font-size);
+    font-weight: 500;
+    z-index: -1;
+}
+.text-field input:focus + .prompt {
+    /* === Event of the prompt texts when text fields are focused === */
+    top: -.5rem;
+    left: .8rem;
+    color: var(--main-color);
+    font-size: var(--mini-font-size);
+    z-index: 2;
+}
+.field:not(:placeholder-shown).field:not(:focus)+.prompt {
+    /* === Prompt texts remains at the top === */
+    top: -.5rem;
+    left: .8rem;
+    font-size: var(--mini-font-size);
+    z-index: 2;
+}
+
+.text-field input:focus{
+    /* === Animation for text fields === */
+    border: 1px solid var(--main-color);
+    transition: all 0.3s ease;
+}
+.button-container {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 380px;
+}
+.button {
+    height: 40px;
+    width: 100%;
+    line-height: 43px;
+    margin: 3px;
+    padding: 0 22px;
+    font-size: 0.73rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.1s ease-in-out;
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.button:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.397);
+}
+.forms .link-container {
+    display: flex;
+    justify-content: center;
+}
+.link-container a {
+    position: absolute;
+    bottom: 1rem;
+    font-size: var(--mini-font-size);
+    background-color: transparent;
+}
+.forms a:hover {
+    text-decoration: underline;
+}
+fieldset {
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+.error {
+    color: var(--dark-color);
+}
+
+.text-field textarea {
+    height: 120px;
+    width: 100%;
+    border-radius: 0.75rem;
+    background-color: transparent;
+    border: 1px solid #E5E5E5;
+    outline: none;
+    padding: 1.3em 1.3em;
+    letter-spacing: 1px;
+    resize: none;
+}
+.text-field textarea:focus {
+    border: 1px solid var(--main-color);
+    transition: all 0.3s ease;
+}
+#basic-info {
+    min-height: 500px;
+}
