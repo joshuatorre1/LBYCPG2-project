@@ -15,6 +15,7 @@
         <li><a href="landing.html">Home</a></li>
         <li><a href="manage.php">Manage Organization</a></li>
         <li><a href="orglist.php">Organization List</a></li>
+        <li><a href="central_donated.php">Donated Items</a> </li>
         <li><a href="about.php">About Us</a></li>
     </ul>
 </nav>
