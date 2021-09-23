@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,56 +17,65 @@
 </div>
 <script>
     $(function(){
-        $("#nav-placeholder").load("navbar.html");
+        $("#nav-placeholder").load("navbar.php");
     });
 </script>
 
 <!--PHP SCRIPT FOR LOGGING IN-->
 <?php
-//    $usernameLogin = $passwordLogin = $statusLogin = "";
-//
-//    $sqlConnectLogin = mysqli_connect('localhost', 'root', '');
-//    if (!$sqlConnectLogin) {
-//        die();
-//    }
-//
-//    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//
-//        $selectDBLogin = mysqli_select_db($sqlConnectLogin, 'LoginDatabase');
-//        if (!$selectDBLogin) {
-//            die();
-//        }
-//
-//        $result_out_login = mysqli_query($sqlConnectLogin, "select * from AccountDetails");
-//        $rows = mysqli_num_rows($result_out_login);
-//        $count = 0;
-//
-//        $usernameLogin = $_POST["usernameLogin"];
-//        $passwordLogin = $_POST["passwordLogin"];
-//        $data_login = array(array());
-//
-//        while ($SRLog = mysqli_fetch_array($result_out_login)) {
-//            $data_login[$count][0] = $SRLog["Username"];
-//            $data_login[$count][0] = $SRLog["Password"];
-//            $count++;
-//        }
-//
-//        for ($i = 0; $i < $rows; $i++) {
-//            if ((strcmp($data_login[$i][0], $usernameLogin) == 0) && (strcmp($data_login[$i][1], $passwordLogin) == 0)) {
-//                $statusLogin = "Login successful! SCRIPT FOR JUMPING TO ORG HOME PAGE";     // ADD SCRIPT TO JUMP TO ORG HOME PAGE
-//                break;
-//            }
-//            else if ((strcmp($data_login[$i][0], $usernameLogin) == 0) && (strcmp($data_login[$i][1], $passwordLogin) != 0)) {
-//                $statusLogin = "Incorrect Password. Please try again.";
-//                break;
-//            }
-//            else {
-//                $statusLogin = "Your organization is not registered within the website.";
-//            }
-//        }
-//    }
-//    mysqli_close($sqlConnectLogin)
-//?>
+    $usernameLogin = $passwordLogin = $statusLogin = "";
+
+    $sqlConnectLogin = mysqli_connect('localhost', 'root', '');
+    if (!$sqlConnectLogin) {
+        die();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $selectDBLogin = mysqli_select_db($sqlConnectLogin, 'LoginDatabase');
+        if (!$selectDBLogin) {
+            die();
+        }
+
+        $result_out_login = mysqli_query($sqlConnectLogin, "select * from AccountDetails");
+        $rows = mysqli_num_rows($result_out_login);
+        $count = 0;
+
+        $usernameLogin = $_POST["usernameLogin"];
+        $passwordLogin = $_POST["passwordLogin"];
+        $data_login = array(array());
+
+        $_SESSION['usernameLogin'] = $_POST["usernameLogin"];
+
+        while ($SRLog = mysqli_fetch_array($result_out_login)) {
+            $data_login[$count][0] = $SRLog["Username"];
+            $data_login[$count][1] = $SRLog["Password"];
+            $data_login[$count][2] = $SRLog["OrganizationName"];
+            $count++;
+        }
+
+        for ($i = 0; $i < $rows; $i++) {
+            if ((strcmp($data_login[$i][0], $usernameLogin) == 0) && (strcmp($data_login[$i][1], $passwordLogin) == 0)) {
+                $statusLogin = "Login successful! SCRIPT FOR JUMPING TO ORG HOME PAGE";     // ADD SCRIPT TO JUMP TO ORG HOME PAGE
+                $_SESSION["OrganizationName"] = $data_login[$i][2];
+                ?>
+                <script>
+                    location.replace("profile.php");
+                </script>
+                <?php
+                break;
+            }
+            else if ((strcmp($data_login[$i][0], $usernameLogin) == 0) && (strcmp($data_login[$i][1], $passwordLogin) != 0)) {
+                $statusLogin = "Incorrect Password. Please try again.";
+                break;
+            }
+            else {
+                $statusLogin = "Your organization is not registered within the website.";
+            }
+        }
+    }
+    mysqli_close($sqlConnectLogin)
+?>
 
 <div class="container">
     <form class="forms" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -75,15 +88,17 @@
             <input class="field" type="password" placeholder=" " id="password" name="passwordLogin" required>
             <label class="prompt" for="password">Password</label>
         </div>
+        <div class="error-container">
+            <h4 class="error"><?php echo $statusLogin;?></h4>
+        </div>
         <div class="button-container">
             <input type="submit" class="button" value="Log In">
         </div>
         <div class="link-container">
             <a href="register.php">Don't have an account yet? Sign up here.</a>
         </div>
-
     </form>
-    <!--    <h4>--><?php //echo $statusLogin;?><!--</h4>-->
+
 </div>
 
 </body>

@@ -13,7 +13,7 @@
         </div>
         <script>
             $(function(){
-                $("#nav-placeholder").load("navbar.html");
+                $("#nav-placeholder").load("navbar.php");
             });
         </script>
     </body>
@@ -199,4 +199,5 @@
             ";
         }
         ?>
+
 </html>
