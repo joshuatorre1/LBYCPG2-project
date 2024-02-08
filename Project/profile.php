@@ -67,7 +67,8 @@ if(!$selectDB) die();
     <div class="table-container">
         <table>
             <tr>
-                <th>Donation ID</th>
+<!--                <th>Donation ID</th>-->
+                <th>Donated Cause</th>
                 <th>Item Donated</th>
                 <th>Quantity</th>
                 <th>Email Address</th>
@@ -81,7 +82,8 @@ if(!$selectDB) die();
             while($SR = mysqli_fetch_array($result_out)) {
             ?>
                 <tr>
-                    <td><?php echo $SR['DonationID'];?></td>
+<!--                    <td>--><?php //echo $SR['DonationID'];?><!--</td>-->
+                    <td><?php echo $SR['Issue']?></td>
                     <td><?php echo $SR['ItemDonated'];?></td>
                     <td><?php echo $SR['Quantity'];?></td>
                     <td><?php echo $SR['EmailAddress'];?></td>
